@@ -10,7 +10,7 @@ CoreDataCollectionViewController is conceptually the same as CDTableViewControll
 ### Usage
 Just subclass the one you need (UITableViewController or UICollectionViewController) and set it's `NSFetchedResultsController *fetchedResultsController` property. 
 
-After that you'll only have to implement `-tableView:cellForRowAtIndexPath:` or `-collectionView:cellForItemAtIndexPath:` and `fetchedResultsController` will take care of other required DataSource methods, and will also update UITableView or UICollectionView whenever the underlying data changes (insert, delete, update, move).
+After that you'll only have to implement `-tableView:cellForRowAtIndexPath:` or `-collectionView:cellForItemAtIndexPath:` and fetchedResultsController will take care of other required DataSource methods, and will also update UITableView or UICollectionView whenever the underlying data changes (insert, delete, update, move).
 
 ## Example
 This example is for `CDTableViewController` but for `CDCollectionViewController` you only use `-collectionView:cellForItemAtIndexPath:` instead of `-tableView:cellForRowAtIndexPath:`.
@@ -44,10 +44,10 @@ This example is for `CDTableViewController` but for `CDCollectionViewController`
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellIdentifier"];
 
     // get NSManagedObject from fetchedResultsController
-    NSManagedObject *obj = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    NSManagedObject *managedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     // set cell data
-    cell.textLabel.text = obj.title;
+    cell.textLabel.text = managedObject.someProperty;
     
     return cell;
 }
